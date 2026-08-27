@@ -1,0 +1,19 @@
+# dependencies / build
+node_modules/
+dist/
+
+# local tooling (personal — never publish)
+.claude/
+.codegraph/
+CLAUDE.md
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+*.log
+
+# local audit artifacts (screenshots, agent workspaces)
+/*.png
+.playwright-mcp/
+.serena/

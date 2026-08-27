@@ -1,0 +1,428 @@
+@import "tailwindcss";
+
+/* ── Design tokens, "control plane" ───────────────────────────── */
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+
+  /* surfaces */
+  --color-bg: #080b0e;
+  --color-surface: #0d1216;
+  --color-raised: #131a20;
+  --color-line: #1c262e;
+  --color-line2: #29363f;
+
+  /* text */
+  --color-text: #cfd8e0;
+  --color-bright: #f2f6f9;
+  --color-dim: #8fa3b0;
+  --color-faint: #73848f;
+
+  /* the palette IS the severity system */
+  --color-accent: #38bdf8;  /* signal blue, links, focus, machine stages */
+  --color-accent2: #2dd4bf; /* teal, identity, secondary data */
+  --color-violet: #a78bfa;  /* violet, structure, modules */
+  --color-ok: #4ade80;      /* pass */
+  --color-warn: #f0b429;    /* medium severity · human gate */
+  --color-high: #f87171;    /* high-severity finding */
+
+  --shadow-glow-sky: 0 0 24px rgb(56 189 248 / 0.22);
+  --shadow-glow-teal: 0 0 16px rgb(45 212 191 / 0.16);
+
+  --text-display: clamp(3rem, 7.5vw, 4.75rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.025em;
+
+  --animate-blink: blink 1.06s steps(1, end) infinite;
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ── Base ──────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgb(56 189 248 / 0.25);
+    color: var(--color-bright);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line2) transparent;
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line2);
+    border: 2px solid var(--color-bg);
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-dim); }
+}
+
+/* ── Component recipes ─────────────────────────────────────────── */
+@layer components {
+  /* blinking block caret (contact console only) */
+  .caret::after {
+    content: "▊";
+    margin-left: 2px;
+    color: var(--color-accent);
+    animation: var(--animate-blink);
+  }
+
+  /* uppercase tracked mono kicker */
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-faint);
+  }
+
+  /* faint blueprint grid for depth */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgb(56 189 248 / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(56 189 248 / 0.03) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 90% 65% at 50% 0%, black 25%, transparent 78%);
+  }
+
+  /* buttons, no glow, borders and lightness only */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    padding: 0.65rem 1.15rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: color 140ms ease, border-color 140ms ease, background-color 140ms ease;
+  }
+  .btn-primary {
+    background: linear-gradient(120deg, #38bdf8, #2dd4bf);
+    border-color: transparent;
+    color: #06131c;
+    font-weight: 500;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.12);
+    box-shadow: var(--shadow-glow-sky);
+  }
+  .btn-ghost {
+    border-color: var(--color-line2);
+    color: var(--color-text);
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    color: var(--color-bright);
+    border-color: rgb(56 189 248 / 0.55);
+    background: var(--color-surface);
+    box-shadow: 0 0 18px rgb(56 189 248 / 0.12);
+  }
+
+  /* inline links: coloured, underlined, unmistakably clickable */
+  .link {
+    color: var(--color-accent);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: rgb(56 189 248 / 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    padding: 0 2px;
+    margin: 0 -2px;
+    border-radius: 3px;
+    transition: color 140ms ease, text-decoration-color 140ms ease, background-color 140ms ease;
+  }
+  .link:hover {
+    color: #7dd3fc;
+    text-decoration-color: currentColor;
+    background: rgb(56 189 248 / 0.09);
+  }
+  .link-teal { color: var(--color-accent2); text-decoration-color: rgb(45 212 191 / 0.45); }
+  .link-teal:hover { color: #5eead4; background: rgb(45 212 191 / 0.09); }
+  .link-violet { color: var(--color-violet); text-decoration-color: rgb(167 139 250 / 0.45); }
+  .link-violet:hover { color: #c4b5fd; background: rgb(167 139 250 / 0.09); }
+  .link-warn { color: var(--color-warn); text-decoration-color: rgb(240 180 41 / 0.45); }
+  .link-warn:hover { color: #fbd36b; background: rgb(240 180 41 / 0.09); }
+
+  /* skill chip */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 0.32rem 0.7rem;
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    background: rgb(13 18 22 / 0.6);
+    color: var(--color-text);
+    transition: border-color 140ms ease, color 140ms ease;
+  }
+  .chip:hover {
+    border-color: rgb(45 212 191 / 0.55);
+    color: var(--color-bright);
+    box-shadow: var(--shadow-glow-teal);
+  }
+  .chip-muted {
+    color: var(--color-dim);
+    border-style: dashed;
+  }
+
+  /* severity chips, meaning, not decoration */
+  .sev {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid;
+  }
+  .sev-high { color: var(--color-high); border-color: rgb(248 113 113 / 0.4); background: rgb(248 113 113 / 0.08); }
+  .sev-medium { color: var(--color-warn); border-color: rgb(240 180 41 / 0.4); background: rgb(240 180 41 / 0.08); }
+  .sev-ok { color: var(--color-ok); border-color: rgb(74 222 128 / 0.4); background: rgb(74 222 128 / 0.08); }
+
+  /* gradient display text, the name */
+  .text-gradient {
+    background: linear-gradient(100deg, #f2f6f9 10%, #7dd3fc 55%, #2dd4bf 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* scroll reveal, enhancement only; elements are visible without JS.
+     useReveal() adds .reveal after mount, .reveal-in when in view. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 420ms var(--ease-out-soft),
+      transform 420ms var(--ease-out-soft);
+  }
+  .reveal.reveal-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* reduced motion: kill decorative animation globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* focus ring, unlayered so no utility (e.g. transition-colors) can
+   animate or override it; the ring is feedback and must be instant */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+  transition: none;
+}
+
+/* gradient border, unlayered so no border utility can override it */
+.border-gradient {
+  border-color: transparent !important;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    linear-gradient(120deg, rgb(56 189 248 / 0.55), rgb(167 139 250 / 0.4) 45%, rgb(45 212 191 / 0.55)) border-box;
+  box-shadow: 0 0 44px rgb(56 189 248 / 0.07);
+}
+
+/* ── Ambience: the plane is running ───────────────────────────────
+   Decorative only. The global reduced-motion rule above zeroes every
+   animation here, and each layer is aria-hidden / pointer-events:none. */
+
+@keyframes drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(5vw, 4vh, 0) scale(1.12); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.06); }
+  50%      { transform: translate3d(-6vw, -3vh, 0) scale(0.94); }
+}
+
+/* soft colour fields that never sit still */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  will-change: transform;
+}
+
+/* health-check sweep, one pass down the viewport, like a scheduled run */
+@keyframes sweep {
+  0%        { transform: translateY(-4vh); opacity: 0; }
+  8%, 88%   { opacity: 1; }
+  100%      { transform: translateY(104vh); opacity: 0; }
+}
+.sweep {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(56 189 248 / 0.28) 22%,
+    rgb(45 212 191 / 0.42) 50%,
+    rgb(56 189 248 / 0.28) 78%,
+    transparent
+  );
+  box-shadow: 0 0 22px rgb(56 189 248 / 0.28);
+  animation: sweep 13s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* film grain, kills gradient banding, adds tooth to the flat surfaces */
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* panels light up under the cursor, like a hovered resource in a console.
+   --px/--py are written by Panel's pointer handler. */
+.panel-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  background: radial-gradient(
+    340px circle at var(--px, 50%) var(--py, 50%),
+    rgb(56 189 248 / 0.15),
+    rgb(45 212 191 / 0.07) 38%,
+    transparent 68%
+  );
+}
+.panel-glow:hover::before,
+.panel-glow:focus-within::before { opacity: 1; }
+.panel-glow > * { position: relative; z-index: 1; }
+
+/* status dots that actually breathe */
+@keyframes ping {
+  0%        { transform: scale(1); opacity: 0.5; }
+  70%, 100% { transform: scale(2.8); opacity: 0; }
+}
+.pulse-dot { position: relative; }
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: ping 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes live-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+.live { animation: live-blink 2.2s ease-in-out infinite; }
+
+/* a light chases the flagship panel's border, marking it "live",
+   same idea as the header .live dot */
+@property --beam-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes beam-rotate {
+  to { --beam-angle: 360deg; }
+}
+.border-beam {
+  position: relative;
+}
+.border-beam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg,
+    transparent 265deg,
+    rgb(56 189 248 / 0.9) 300deg,
+    rgb(45 212 191 / 0.9) 330deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: beam-rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+/* hero checklist: each "pass" ticks in on load, staggered, so the
+   policy review reads as completing rather than sitting pre-solved */
+.hero-checks .check {
+  opacity: 0.3;
+  transition: opacity 320ms var(--ease-out-soft);
+}
+.hero-checks.ticked .check {
+  opacity: 1;
+}
+
+/* pipeline flow: a light descending the architecture diagram's spine,
+   echoing .sweep but triggered once on scroll-into-view rather than looping */
+.pipeline-flow {
+  position: absolute;
+  inset-block: 0;
+  left: -1px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgb(56 189 248 / 0), rgb(56 189 248 / 0.9) 92%, rgb(45 212 191 / 1));
+  box-shadow: 0 0 10px 2px rgb(56 189 248 / 0.55);
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+}
+.pipeline-flow.flow-in {
+  animation: pipeline-flow-in 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes pipeline-flow-in {
+  to { clip-path: inset(0 0 0% 0); }
+}
+
+/* reduced motion: the ambient layers are decoration, drop them rather
+   than freeze them mid-animation */
+@media (prefers-reduced-motion: reduce) {
+  .sweep,
+  .pulse-dot::after,
+  .border-beam::after,
+  .pipeline-flow { display: none; }
+}
