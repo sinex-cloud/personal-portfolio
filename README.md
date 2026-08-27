@@ -1,32 +1,22 @@
-# Ahmed Brini — personal portfolio
+# Ahmed Brini
 
-My personal site, built around a single idea: don't tell people I build reliable
-infrastructure pipelines, show them one. The whole design borrows its language
-from a policy-gated deployment — pull request, checks, human approval, gated
-apply — because that's the actual system I built and the site walks through it
-as a full case study.
+Live site: https://ahmedbrini.vercel.app
 
-**Who am I?** Final-year software engineering student at SMU (Tunis), focused
-on cloud infrastructure automation on GCP: Terraform IaC, policy-as-code,
-Python services on Cloud Run.
+Personal portfolio site. I'm a final-year software engineering student at MedTech, South Mediterranean University in Tunis, focused on cloud infrastructure automation on Google Cloud Platform: Terraform, policy as code, and Python services on Cloud Run.
 
-## What's here
+## What's inside
 
-- A single-page profile — about, stack, experience, projects, certifications
-- A full case-study route (`/work/:slug`) walking through the flagship
-  project's architecture, its seven policy checks, and the approval gate
-- A real interactive terminal in the contact section (`help` to see what it
-  can do)
-- Dark, restrained "control-plane" visual system — no template gradients,
-  motion respects `prefers-reduced-motion`
+- Profile page: background, technical stack, work experience, certifications
+- Case study at `/work/gcp-iac-review-pipeline`: a GitHub App that reviews Terraform pull requests and holds `terraform apply` behind a human approval gate
+- Interactive terminal in the contact section (type `help`)
 
 ## Stack
-
-React 19 · TypeScript · Vite · React Router · Tailwind CSS v4 · self-hosted
-fonts (JetBrains Mono, IBM Plex Sans) — no analytics, no trackers.
+React 19, TypeScript, Vite, React Router, Tailwind CSS v4.
 
 ## Contact
 
-- ahmed.brini.ar@gmail.com
-- [linkedin.com/in/ahmedbrini](https://www.linkedin.com/in/ahmedbrini/)
-- [github.com/sinex-cloud](https://github.com/sinex-cloud)
+Open to a 4 to 6 month end-of-study internship (PFE), January to June 2027.
+
+- Email: ahmed.brini.ar@gmail.com
+- LinkedIn: https://www.linkedin.com/in/ahmedbrini/
+- GitHub: https://github.com/sinex-cloud
