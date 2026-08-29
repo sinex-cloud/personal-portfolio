@@ -27,11 +27,7 @@ export default function Projects() {
   const rest = projects.filter((p) => !p.flagship)
 
   return (
-<<<<<<< HEAD
-    <Section id="work" index="03" kicker="projects" title="Work">
-=======
     <Section id="work" index="02" kicker="projects" title="Work">
->>>>>>> c56a145 (content: tailor to resume, reorder sections, contact/about fixes, cv swap)
       {/* flagship */}
       <article data-reveal aria-labelledby="flagship-title">
         <Panel title={`01 · ${flagship.origin.toLowerCase()} · flagship`} className="border-gradient border-beam">

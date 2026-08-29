@@ -271,15 +271,9 @@ export const certifications = [
 /* nav: sections rendered in order */
 export const sections = [
   { id: 'about', label: 'About', kicker: 'profile' },
-<<<<<<< HEAD
-  { id: 'stack', label: 'Stack', kicker: 'technical skills' },
-  { id: 'work', label: 'Work', kicker: 'projects' },
-  { id: 'experience', label: 'Experience', kicker: 'internships' },
-=======
   { id: 'work', label: 'Work', kicker: 'projects' },
   { id: 'experience', label: 'Experience', kicker: 'internships' },
   { id: 'stack', label: 'Stack', kicker: 'technical skills' },
->>>>>>> c56a145 (content: tailor to resume, reorder sections, contact/about fixes, cv swap)
   { id: 'certifications', label: 'Certifications', kicker: 'credentials' },
   { id: 'contact', label: 'Contact', kicker: 'get in touch' },
 ] as const

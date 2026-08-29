@@ -15,8 +15,8 @@ React 19, TypeScript, Vite, React Router, Tailwind CSS v4.
 
 ## Contact
 
-Open to a 4 to 6 month end-of-study internship (PFE), January to June 2027.
+Open to a 4 to 6 month capstone internship (PFE), January to June 2027.
 
-- Email: ahmed.brini@medtech.com
+- Email: ahmed.brini@medtech.tn
 - LinkedIn: https://www.linkedin.com/in/ahmedbrini/
 - GitHub: https://github.com/sinex-cloud

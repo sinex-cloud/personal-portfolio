@@ -18,15 +18,9 @@ function Home() {
     <>
       <Hero />
       <About />
-<<<<<<< HEAD
-      <Skills />
-      <Projects />
-      <Experience />
-=======
       <Projects />
       <Experience />
       <Skills />
->>>>>>> c56a145 (content: tailor to resume, reorder sections, contact/about fixes, cv swap)
       <Certifications />
       <ContactTerminal />
     </>
