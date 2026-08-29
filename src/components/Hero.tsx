@@ -28,9 +28,16 @@ export default function Hero() {
         <h1 className="text-gradient mt-4 font-sans text-display font-semibold">
           {identity.name}
         </h1>
-        <p className="mt-6 max-w-[38rem] font-sans text-lg leading-relaxed text-text sm:text-xl">
+        <p className="mt-6 max-w-[36rem] font-sans text-xl leading-snug font-medium text-text sm:text-2xl">
           {identity.headline}
         </p>
+        <ul aria-label="Focus areas" className="mt-4 flex flex-wrap gap-2">
+          {['Cloud', 'DevOps', 'Backend'].map((t) => (
+            <li key={t} className="chip !py-1 !text-[11px]">
+              {t}
+            </li>
+          ))}
+        </ul>
         <p className="mt-5 flex items-center gap-2 font-mono text-sm text-dim">
           <span aria-hidden className="pulse-dot size-2 rounded-full bg-ok text-ok" />
           {availability.statement}

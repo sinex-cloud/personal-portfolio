@@ -63,7 +63,7 @@ function run(raw: string): ReactNode | 'clear' {
         <dl className="space-y-1">
           {skills.map((g) => (
             <div key={g.label} className="flex flex-wrap gap-x-3">
-              <dt className={`w-56 shrink-0 ${g.muted ? 'text-faint' : 'text-accent'}`}>{g.label.toLowerCase()}</dt>
+              <dt className="w-56 shrink-0 text-accent">{g.label.toLowerCase()}</dt>
               <dd className="text-dim">{g.items.join(', ')}</dd>
             </div>
           ))}
@@ -234,7 +234,7 @@ export default function ContactTerminal() {
                   <a
                     href={href}
                     {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
-                    className={`break-all ${hue}`}
+                    className={`break-all lg:whitespace-nowrap ${hue}`}
                   >
                     {text}
                   </a>

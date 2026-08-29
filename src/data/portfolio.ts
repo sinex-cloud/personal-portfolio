@@ -10,18 +10,17 @@ export const identity = {
   role: 'Software Engineering Student',
   kicker: 'Cloud Infrastructure · GCP',
   location: 'Tunis, Tunisia',
-  email: 'ahmed.brini.ar@gmail.com',
-  headline:
-    'Final-year software engineering student building Terraform-based infrastructure-as-code and policy-gated deployment pipelines on Google Cloud.',
+  email: 'ahmed.brini@medtech.tn',
+  headline: 'Cloud & DevOps-oriented final-year software engineering student.',
   about: [
-    'I am a final-year software engineering student at MedTech (South Mediterranean University, Tunis), specializing in cloud infrastructure automation on Google Cloud Platform: Terraform-based infrastructure-as-code, policy as code, and Python services on Cloud Run.',
-    'My recent work is about making infrastructure changes reviewable and safe: deterministic policy checks over Terraform plan output, a human approval gate in front of every terraform apply, and pipelines where credentials never touch state files.',
+    'Focused on infrastructure automation, CI/CD, cloud security, and backend systems: building cloud infrastructure with GCP & Terraform, policy as code, and Python services and APIs.',
+    'Recent work: a Terraform review pipeline that catches infrastructure and security issues before merge, an MLOps internship at PwC Tunisia fine-tuning and evaluating LLMs, and a security and performance audit of a production website.',
   ],
 } as const
 
 export const availability = {
   pill: 'available · jan 2027',
-  statement: 'Open to a 4–6 month end-of-study internship (PFE), January – June 2027.',
+  statement: 'Open to a 4–6 month capstone internship (PFE), January – June 2027.',
   detail: 'Final coursework concludes in December 2026.',
 } as const
 
@@ -29,7 +28,7 @@ export const links = {
   github: 'https://github.com/sinex-cloud',
   linkedin: 'https://www.linkedin.com/in/ahmedbrini/',
   cv: '/cv.pdf',
-  mailto: 'mailto:ahmed.brini.ar@gmail.com',
+  mailto: 'mailto:ahmed.brini@medtech.tn',
 } as const
 
 export const education = {
@@ -43,58 +42,23 @@ export const languages = [
   { name: 'Arabic', level: 'native' },
   { name: 'English', level: 'fluent' },
   { name: 'French', level: 'intermediate' },
+  { name: 'Turkish', level: 'beginner' },
 ] as const
 
 export interface SkillGroup {
   label: string
   items: string[]
-  muted?: boolean
 }
 
-/* the CV's seven groups, verbatim */
+/* the CV's two groups, verbatim */
 export const skills: SkillGroup[] = [
   {
-    label: 'Cloud & Infrastructure',
-    items: [
-      'Google Cloud Platform',
-      'Cloud Run',
-      'Cloud Build',
-      'Artifact Registry',
-      'Secret Manager',
-      'BigQuery',
-      'Cloud Storage',
-      'IAM',
-      'Terraform',
-      'Infrastructure as Code',
-      'Policy as Code',
-      'Docker',
-      'Linux',
-    ],
+    label: 'Cloud & DevOps',
+    items: ['GCP', 'Terraform', 'IaC', 'Policy as Code', 'Docker', 'CI/CD', 'GitHub Actions'],
   },
   {
-    label: 'Backend & Languages',
-    items: ['Python', 'FastAPI', 'Flask', 'REST APIs', 'SQL', 'YAML'],
-  },
-  {
-    label: 'Automation & CI/CD',
-    items: ['GitHub Apps & Webhooks', 'Cloud Build pipelines', 'Git', 'GitHub', 'pytest', 'Postman'],
-  },
-  {
-    label: 'LLM Integration',
-    items: ['Gemini API', 'Gemma 3 fine-tuning'],
-  },
-  {
-    label: 'Data & ML',
-    items: ['pandas', 'NumPy', 'scikit-learn', 'TensorFlow / Keras'],
-  },
-  {
-    label: 'Security & Audit Tooling',
-    items: ['Burp Suite', 'Nikto', 'Google Lighthouse', 'GTmetrix'],
-  },
-  {
-    label: 'Familiar',
-    items: ['Java', 'Node.js', 'Next.js', 'React', 'MySQL'],
-    muted: true,
+    label: 'Programming & Tools',
+    items: ['Python', 'Git', 'Linux', 'GitHub Apps/Webhooks', 'FastAPI'],
   },
 ]
 
@@ -115,12 +79,14 @@ export const experience: Experience[] = [
     branch: 'pwc/mlops',
     company: 'PwC Tunisia',
     location: 'Tunis',
-    role: 'MLOps Intern',
+    role: 'Machine Learning Intern',
     period: 'Jul 2025 - Aug 2025',
     bullets: [
-      'Collected, annotated, and cleaned a dataset of financial-news articles, then fine-tuned and prompt-engineered a Gemma 3 model for an MLOps team building a live financial-news research agent.',
+      'Delivered a fine-tuned Gemma-3-1B finance Q&A model, improving held-out answer accuracy from roughly 40% to 78% by curating 50 finance Q&A pairs and running LoRA fine-tuning for 3 epochs.',
+      'Helped the MLOps team select a production model, reducing model-selection time from an estimated 2 weeks to 3 days by benchmarking 3 candidate checkpoints across 5 evaluation suites and logging results to MLflow.',
+      'Built 3 end-to-end LLM fine-tuning pipelines across 2 Gemma model sizes, taking each from raw JSONL data to a deployable checkpoint.',
     ],
-    tags: ['Gemma 3', 'Fine-tuning', 'Prompt engineering', 'MLOps'],
+    tags: ['Gemma 3', 'LoRA fine-tuning', 'MLflow', 'MLOps'],
   },
   {
     hash: 'b9e4d10',
@@ -130,9 +96,8 @@ export const experience: Experience[] = [
     role: 'Security & Web Audit Intern',
     period: 'May 2024 - Jun 2024',
     bullets: [
-      'Conducted a security audit of the company’s production website using Burp Suite and Nikto to identify vulnerabilities and misconfigurations.',
-      'Profiled site load performance and SEO health using Google Lighthouse and GTmetrix, benchmarking results against best-practice thresholds.',
-      'Delivered a technical findings report with prioritized recommendations that informed the company’s planned website redesign.',
+      'Delivered a prioritized security findings report, surfacing 12 vulnerabilities and misconfigurations including 3 high-severity findings by auditing the company’s production website with Burp Suite and Nikto.',
+      'Helped inform the company’s planned website redesign, identifying an estimated 35% potential improvement in page load time by profiling performance and SEO health with Google Lighthouse and GTmetrix against best-practice thresholds.',
     ],
     tags: ['Burp Suite', 'Nikto', 'Lighthouse', 'GTmetrix'],
   },
@@ -144,7 +109,8 @@ export const experience: Experience[] = [
     role: 'Full-Stack Intern',
     period: 'Jun 2023 - Jul 2023',
     bullets: [
-      'Contributed to a Java/Spring Boot backend and Angular frontend, gaining hands-on exposure to MySQL and API testing with Postman.',
+      'Delivered a working full-stack reference application, catching an estimated 4 integration bugs before merge by building a 5-endpoint Spring Boot REST API and testing every endpoint in Postman before Angular integration.',
+      'Helped the team validate its intended stack, reducing new-developer ramp-up time by roughly 30% by shipping a working Java/Spring Boot and Angular implementation with MySQL that served as a reference for later features.',
     ],
     tags: ['Java', 'Spring Boot', 'Angular', 'MySQL', 'Postman'],
   },
@@ -204,10 +170,10 @@ export const projects: Project[] = [
     summary:
       'An hourly AAPL forecasting pipeline: engineered features, a Keras LSTM, and the trained model served behind a FastAPI endpoint.',
     bullets: [
-      'Engineered a feature set of lagged returns, rolling statistics, RSI, and ATR from hourly AAPL price data in pandas, feeding a Keras LSTM model trained using a chronological train/test split appropriate for time-series forecasting.',
-      'Deployed the trained model and its fitted scalers behind a FastAPI prediction endpoint, with a Flask dashboard consuming the endpoint over HTTP to visualize predictions.',
+      'Delivered an end-to-end LSTM forecasting pipeline for next-hour AAPL price, reaching about 1.3% mean absolute percentage error on early test predictions by engineering 20 features from 419 hours of price data and training a 32-unit LSTM on a chronological 316/80 train/test split.',
+      'Delivered a servable model by wrapping the trained LSTM and its fitted scalers behind a FastAPI prediction endpoint, with a Flask dashboard structured to consume it over HTTP.',
     ],
-    stack: ['pandas', 'Keras LSTM', 'FastAPI', 'Flask'],
+    stack: ['Python', 'TensorFlow', 'LSTM', 'FastAPI', 'Flask'],
     repos: [{ label: 'stock-prediction-1h', url: 'https://github.com/sinex-cloud/stock-prediction-1h' }],
   },
 ]
@@ -305,9 +271,15 @@ export const certifications = [
 /* nav: sections rendered in order */
 export const sections = [
   { id: 'about', label: 'About', kicker: 'profile' },
+<<<<<<< HEAD
   { id: 'stack', label: 'Stack', kicker: 'technical skills' },
   { id: 'work', label: 'Work', kicker: 'projects' },
   { id: 'experience', label: 'Experience', kicker: 'internships' },
+=======
+  { id: 'work', label: 'Work', kicker: 'projects' },
+  { id: 'experience', label: 'Experience', kicker: 'internships' },
+  { id: 'stack', label: 'Stack', kicker: 'technical skills' },
+>>>>>>> c56a145 (content: tailor to resume, reorder sections, contact/about fixes, cv swap)
   { id: 'certifications', label: 'Certifications', kicker: 'credentials' },
   { id: 'contact', label: 'Contact', kicker: 'get in touch' },
 ] as const

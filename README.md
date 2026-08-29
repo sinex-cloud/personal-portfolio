@@ -15,8 +15,14 @@ React 19, TypeScript, Vite, React Router, Tailwind CSS v4.
 
 ## Contact
 
+<<<<<<< HEAD
 Open to a 4 to 6 month end-of-study internship (PFE), January to June 2027.
 
 - Email: ahmed.brini.ar@gmail.com
 - LinkedIn: https://www.linkedin.com/in/ahmedbrini/
 - GitHub: https://github.com/sinex-cloud
+=======
+- ahmed.brini@medtech.tn
+- [linkedin.com/in/ahmedbrini](https://www.linkedin.com/in/ahmedbrini/)
+- [github.com/sinex-cloud](https://github.com/sinex-cloud)
+>>>>>>> c56a145 (content: tailor to resume, reorder sections, contact/about fixes, cv swap)
