@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- Source of og.png (the LinkedIn/social preview). Regenerate with:
+     chromium --headless --hide-scrollbars --window-size=1200,630 --virtual-time-budget=3000 --screenshot=og.png og.html -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600&amp;family=JetBrains+Mono:wght@500;800&amp;display=block">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: radial-gradient(60% 70% at 10% 0%, rgba(74, 222, 128, .10), transparent 70%), #0c0e12;
+    color: #f3f4f6; font-family: "Hanken Grotesk", sans-serif; position: relative;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,.09) 1.2px, transparent 1.4px); background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 40% 30%, #000 30%, transparent 80%);
+  }
+  .wrap { position: relative; padding: 78px 84px; }
+  h1 { margin: 0; font: 800 132px/0.95 "JetBrains Mono", monospace; letter-spacing: -0.065em; }
+  h1 span { display: inline-block; width: .4em; height: .7em; margin-left: .12em; background: #4ade80; }
+  .role { margin-top: 34px; font-size: 44px; font-weight: 600; letter-spacing: -0.02em; }
+  .role b { color: #4ade80; font-weight: 600; }
+  .pipe { display: flex; gap: 12px; margin-top: 56px; font: 500 22px "JetBrains Mono", monospace; color: #c9ced6; }
+  .pipe span { padding: 10px 16px; border: 1px solid rgba(255,255,255,.14); border-radius: 10px; background: #14171c; }
+  .pipe i { font-style: normal; color: #4ade80; margin-right: 8px; }
+  .avail { margin-top: 30px; font-size: 26px; color: #b7bdc7; }
+  .avail::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #4ade80; margin-right: 14px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Ahmed Brini<span></span></h1>
+    <p class="role">Software Engineer, <b>Cloud &amp; DevOps</b></p>
+    <div class="pipe"><span><i>✓</i>test</span><span><i>✓</i>build</span><span><i>✓</i>Docker Hub</span><span><i>✓</i>Ansible deploy</span><span><i>✓</i>GCP</span></div>
+    <p class="avail">Open to a capstone project internship (PFE) from January 2027</p>
+  </div>
+</body>
+</html>

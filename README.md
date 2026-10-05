@@ -1,22 +1,27 @@
-# Ahmed Brini
+# ahmed-brini-portfolio
 
-Live site: https://ahmedbrini.vercel.app
+Personal portfolio of Ahmed Brini, Software Engineer (Cloud & DevOps). One static page built with plain HTML, CSS and JavaScript. It has no framework, no build step and no tracking.
 
-Personal portfolio site. I'm a final-year software engineering student at MedTech, South Mediterranean University in Tunis, focused on cloud infrastructure automation on Google Cloud Platform: Terraform, policy as code, and Python services on Cloud Run.
+## Run locally
 
-## What's inside
+```bash
+python3 -m http.server 8765
+```
 
-- Profile page: background, technical stack, work experience, certifications
-- Case study at `/work/gcp-iac-review-pipeline`: a GitHub App that reviews Terraform pull requests and holds `terraform apply` behind a human approval gate
-- Interactive terminal in the contact section (type `help`)
+Then open http://127.0.0.1:8765.
 
-## Stack
-React 19, TypeScript, Vite, React Router, Tailwind CSS v4.
+## Files
 
-## Contact
+| File | What it is |
+|---|---|
+| `index.html` | All content, plus an inline SVG icon sprite |
+| `styles.css` | Dark and light themes, layout, motion |
+| `main.js` | Theme toggle, scroll reveals, pipeline replay, terminal typing |
+| `og.html` → `og.png` | Social preview image (the regenerate command is in `og.html`) |
+| `Ahmed_Brini_Resume.pdf` | The resume behind the download buttons |
 
-Open to a 4 to 6 month capstone internship (PFE), January to June 2027.
+The pipeline replay uses real data from GitLab pipeline #2911155655 of `brinidev/gcp-delivery-pipeline`.
 
-- Email: ahmed.brini@medtech.tn
-- LinkedIn: https://www.linkedin.com/in/ahmedbrini/
-- GitHub: https://github.com/sinex-cloud
+## Deploy
+
+Vercel deploys every push to `main`. `vercel.json` sets the framework to "Other", so there is no build step. It also redirects the old `/cv.pdf` link to the current resume.

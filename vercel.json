@@ -1,3 +1,6 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "framework": null,
+  "redirects": [
+    { "source": "/cv.pdf", "destination": "/Ahmed_Brini_Resume.pdf", "permanent": false }
+  ]
 }
