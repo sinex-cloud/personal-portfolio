@@ -1,0 +1,8 @@
+# local tooling
+.claude/
+.serena/
+.playwright-mcp/
+.vscode/
+.idea/
+.DS_Store
+*.log
